@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module configVersion="1.2">
+
+	<id>${project.parent.artifactId}</id>
+	<name>${project.parent.name}</name>
+	<version>${project.parent.version}</version>
+	<package>${project.parent.groupId}.${project.parent.artifactId}</package>
+	<author>PIH</author>
+	<description>
+		${project.parent.description}
+	</description>
+	<require_version>${openMRSVersion}</require_version>
+
+	<require_modules>
+		<require_module>
+			org.openmrs.module.webservices.rest
+		</require_module>
+	</require_modules>
+
+	<activator>${project.parent.groupId}.${project.parent.artifactId}.HivAppointmentsActivator</activator>
+
+	<privilege>
+		<name>View HIV Appointments</name>
+		<description>Able to view the list of HIV appointments and ARV pickups by site</description>
+	</privilege>
+
+	<privilege>
+		<name>Manage HIV Appointments</name>
+		<description>Able to record contact attempts and reschedule HIV appointments and ARV pickups</description>
+	</privilege>
+
+	<globalProperty>
+		<property>hivappointments.hivProgramUuid</property>
+		<defaultValue>b1cb1fc1-5190-4f7a-af08-48870975dafc</defaultValue>
+		<description>UUID of the HIV program. Only patients enrolled in this program on the scheduled date are listed.</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>hivappointments.returnVisitDateConcept</property>
+		<defaultValue>3ce94df0-26fe-102b-80cb-0017a47871b2</defaultValue>
+		<description>Concept (uuid or SOURCE:CODE mapping) of the return visit date obs that schedules an appointment</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>hivappointments.commentConcept</property>
+		<defaultValue>CIEL:161011</defaultValue>
+		<description>Free text concept (uuid or SOURCE:CODE mapping) used for tracking comments</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>hivappointments.clinicalEncounterTypes</property>
+		<defaultValue>c31d306a-40c4-11e7-a919-92ebcb67fe33,c31d3312-40c4-11e7-a919-92ebcb67fe33,0f070640-279e-4ec0-9e6c-6ef1f6567030,584124b9-1f10-4757-ba09-91fc9075af92,95e03e7d-9aeb-4a99-bd7a-94e8591ec2c5</defaultValue>
+		<description>Comma-separated encounter type uuids of HIV clinical visits (HIV Intake, HIV Followup, EID Followup, PMTCT Intake, PMTCT Followup)</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>hivappointments.arvPickupEncounterTypes</property>
+		<defaultValue>cc1720c9-3e4c-4fa8-a7ec-40eeaad1958c</defaultValue>
+		<description>Comma-separated encounter type uuids of ARV pickups (HIV drug dispensing)</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>hivappointments.ltfuThresholdDays</property>
+		<defaultValue>28</defaultValue>
+		<description>Number of days after a missed appointment before the patient is considered lost to follow-up</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>hivappointments.phoneAttributeTypeUuid</property>
+		<defaultValue>14d4f066-15f5-102d-96e4-000c29c2a5d7</defaultValue>
+		<description>Person attribute type holding the patient phone number</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>hivappointments.identifierTypeUuid</property>
+		<defaultValue></defaultValue>
+		<description>Patient identifier type to display. If empty, the preferred identifier is used.</description>
+	</globalProperty>
+
+	<messages>
+		<lang>en</lang>
+		<file>messages.properties</file>
+	</messages>
+	<messages>
+		<lang>fr</lang>
+		<file>messages_fr.properties</file>
+	</messages>
+	<messages>
+		<lang>ht</lang>
+		<file>messages_ht.properties</file>
+	</messages>
+
+</module>
